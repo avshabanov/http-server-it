@@ -26,5 +26,25 @@ You should note, that:
 + You should make non-concurrent requests to the server
 + You should properly set the expectations prior to server requests
 
+## Maven
+```xml
+    <dependency>
+        <groupId>com.alexshabanov.it.httpserver</groupId>
+        <artifactId>http-server-it</artifactId>
+        <version>1.0.1</version>
+    </dependency>
+```
 
+Repository:
+```xml
+    <repositories>
+        <repository>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <id>custom-central</id>
+            <url>https://github.com/avshabanov/maven-repo/raw/master/libs-release</url>
+        </repository>
+    </repositories>
+```
 
