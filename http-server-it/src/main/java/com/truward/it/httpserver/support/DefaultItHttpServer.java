@@ -68,7 +68,7 @@ public final class DefaultItHttpServer implements ItHttpServer {
   /**
    * Flag, that indicates this server has been started and some properties can no longer be changed.
    */
-  private boolean started = false;
+  private volatile boolean started = false;
 
   /**
    * Flag, that indicates this server should be immediately stopped.
@@ -98,6 +98,7 @@ public final class DefaultItHttpServer implements ItHttpServer {
   /**
    * Public constructor.
    *
+   * @param executorService Service to be used for spawning new listener threads
    * @param soTimeout Socket connection timeout in milliseconds. See also {@link #setSoTimeout(int)}
    * @param port Server socket listening port, will be picked automatically if negative
    */
