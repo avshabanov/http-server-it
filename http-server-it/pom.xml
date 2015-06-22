@@ -8,7 +8,6 @@
     <version>1.0.1</version>
   </parent>
 
-  <groupId>com.truward.it.httpserver</groupId>
   <artifactId>http-server-it</artifactId>
   <packaging>jar</packaging>
   <name>Http Server for Integration Testing</name>

@@ -12,14 +12,14 @@ mvn clean install
 Sample usage in tests:
 
 ```java
-    ItHttpServer server = new DefaultItHttpServer(executorService);
-    // Set response handler that returns 204 NO CONTENT for all the requests
-    server.setResponseProducer(EmptyItResponseProducer.NO_CONTENT_INSTANCE);
+  ItHttpServer server = new DefaultItHttpServer(executorService);
+  // Set response handler that returns 204 NO CONTENT for all the requests
+  server.setResponseProducer(EmptyItResponseProducer.NO_CONTENT_INSTANCE);
 
-    // request for something
-    HttpDelete httpDelete = new HttpDelete("http://127.0.0.1:" + server.getPort() + "/delete/something";
-    HttpResponse response = httpClient.execute(httpDelete);
-    // response.getStatusLine().getStatusCode() will return 204
+  // request for something
+  HttpDelete httpDelete = new HttpDelete("http://127.0.0.1:" + server.getPort() + "/delete/something";
+  HttpResponse response = httpClient.execute(httpDelete);
+  // response.getStatusLine().getStatusCode() will return 204
 ```
 
 ## Notes
