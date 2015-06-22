@@ -21,48 +21,48 @@ import java.util.concurrent.Callable;
  * @author Alexander Shabanov
  */
 public final class ServerConnectionHandler implements Callable<HttpRequest> {
-    private final Logger log = LoggerFactory.getLogger(ServerConnectionHandler.class);
+  private final Logger log = LoggerFactory.getLogger(ServerConnectionHandler.class);
 
-    private final ItResponseProducer responseWriter;
-    private final Socket connectionSocket;
+  private final ItResponseProducer responseWriter;
+  private final Socket connectionSocket;
 
-    public ServerConnectionHandler(Socket connectionSocket, ItResponseProducer responseWriter) {
-        this.connectionSocket = connectionSocket;
-        this.responseWriter = responseWriter;
-    }
+  public ServerConnectionHandler(Socket connectionSocket, ItResponseProducer responseWriter) {
+    this.connectionSocket = connectionSocket;
+    this.responseWriter = responseWriter;
+  }
 
-    @Override
-    public HttpRequest call() throws Exception {
-        final DefaultHttpServerConnection serverConnection = new DefaultHttpServerConnection();
-        serverConnection.bind(connectionSocket, new BasicHttpParams());
+  @Override
+  public HttpRequest call() throws Exception {
+    final DefaultHttpServerConnection serverConnection = new DefaultHttpServerConnection();
+    serverConnection.bind(connectionSocket, new BasicHttpParams());
+    try {
+      final HttpRequest request = serverConnection.receiveRequestHeader();
+      if (request instanceof HttpEntityEnclosingRequest) {
+        serverConnection.receiveRequestEntity((HttpEntityEnclosingRequest) request);
+      }
+
+      ItResponseProducer producer = this.responseWriter;
+      if (producer == null) {
+        log.warn("No response writer, 'No Content' response writer will be used");
+        producer = EmptyItResponseProducer.NO_CONTENT_INSTANCE;
+      }
+
+      final HttpResponse response = producer.create(request);
+      serverConnection.sendResponseHeader(response);
+
+      final HttpEntity entity = response.getEntity();
+      if (entity != null) {
         try {
-            final HttpRequest request = serverConnection.receiveRequestHeader();
-            if (request instanceof HttpEntityEnclosingRequest) {
-                serverConnection.receiveRequestEntity((HttpEntityEnclosingRequest) request);
-            }
-
-            ItResponseProducer producer = this.responseWriter;
-            if (producer == null) {
-                log.warn("No response writer, 'No Content' response writer will be used");
-                producer = EmptyItResponseProducer.NO_CONTENT_INSTANCE;
-            }
-
-            final HttpResponse response = producer.create(request);
-            serverConnection.sendResponseHeader(response);
-
-            final HttpEntity entity = response.getEntity();
-            if (entity != null) {
-                try {
-                    serverConnection.sendResponseEntity(response);
-                } finally {
-                    EntityUtils.consume(entity);
-                }
-            }
-
-            return request;
+          serverConnection.sendResponseEntity(response);
         } finally {
-            serverConnection.close();
-            assert connectionSocket.isClosed();
+          EntityUtils.consume(entity);
         }
+      }
+
+      return request;
+    } finally {
+      serverConnection.close();
+      assert connectionSocket.isClosed();
     }
+  }
 }

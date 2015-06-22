@@ -11,14 +11,14 @@ import java.io.IOException;
  * @author Alexander Shabanov
  */
 public class StaticJsonResponseProducer extends AbstractResponseProducer {
-    private final String content;
+  private final String content;
 
-    public StaticJsonResponseProducer(String content) {
-        this.content = content;
-    }
+  public StaticJsonResponseProducer(String content) {
+    this.content = content;
+  }
 
-    @Override
-    public HttpResponse create(HttpRequest request) throws IOException {
-        return createResponse(HttpStatus.SC_OK, ContentType.APPLICATION_JSON, content);
-    }
+  @Override
+  public HttpResponse create(HttpRequest request) throws IOException {
+    return createResponse(HttpStatus.SC_OK, ContentType.APPLICATION_JSON, content);
+  }
 }

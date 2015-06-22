@@ -10,19 +10,19 @@ import org.apache.http.HttpStatus;
  * @author Alexander Shabanov
  */
 public final class EmptyItResponseProducer extends AbstractResponseProducer {
-    /**
-     * Singleton instance, that generates response with NO CONTENT status code
-     */
-    public static final EmptyItResponseProducer NO_CONTENT_INSTANCE = new EmptyItResponseProducer(HttpStatus.SC_NO_CONTENT);
+  /**
+   * Singleton instance, that generates response with NO CONTENT status code
+   */
+  public static final EmptyItResponseProducer NO_CONTENT_INSTANCE = new EmptyItResponseProducer(HttpStatus.SC_NO_CONTENT);
 
-    private final int statusCode;
+  private final int statusCode;
 
-    public EmptyItResponseProducer(int statusCode) {
-        this.statusCode = statusCode;
-    }
+  public EmptyItResponseProducer(int statusCode) {
+    this.statusCode = statusCode;
+  }
 
-    @Override
-    public HttpResponse create(HttpRequest request) {
-        return createResponse(statusCode);
-    }
+  @Override
+  public HttpResponse create(HttpRequest request) {
+    return createResponse(statusCode);
+  }
 }
