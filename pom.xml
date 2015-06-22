@@ -2,11 +2,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.alexshabanov.it.httpserver</groupId>
+    <groupId>com.truward.it.httpserver</groupId>
     <artifactId>http-server-it-parent</artifactId>
     <version>1.0.1</version>
     <packaging>pom</packaging>
-    <name>IT HTTP Server Parent</name>
+    <name>HTTP Server for Integration Testing - Parent</name>
 
     <modules>
         <module>http-server-it</module>

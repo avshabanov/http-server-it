@@ -1,6 +1,6 @@
-package com.alexshabanov.it.httpserver.producer;
+package com.truward.it.httpserver.producer;
 
-import com.alexshabanov.it.httpserver.ItResponseProducer;
+import com.truward.it.httpserver.ItResponseProducer;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpVersion;
 import org.apache.http.ReasonPhraseCatalog;

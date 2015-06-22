@@ -3,15 +3,15 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.alexshabanov.it.httpserver</groupId>
+        <groupId>com.truward.it.httpserver</groupId>
         <artifactId>http-server-it-parent</artifactId>
         <version>1.0.1</version>
     </parent>
 
-    <groupId>com.alexshabanov.it.httpserver</groupId>
+    <groupId>com.truward.it.httpserver</groupId>
     <artifactId>http-server-it</artifactId>
     <packaging>jar</packaging>
-    <name>IT Http Server</name>
+    <name>Http Server for Integration Testing</name>
 
     <dependencies>
         <dependency>

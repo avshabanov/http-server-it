@@ -1,7 +1,7 @@
-package com.alexshabanov.it.httpserver.support;
+package com.truward.it.httpserver.support;
 
-import com.alexshabanov.it.httpserver.ItResponseProducer;
-import com.alexshabanov.it.httpserver.producer.EmptyItResponseProducer;
+import com.truward.it.httpserver.ItResponseProducer;
+import com.truward.it.httpserver.producer.EmptyItResponseProducer;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpEntityEnclosingRequest;
 import org.apache.http.HttpRequest;

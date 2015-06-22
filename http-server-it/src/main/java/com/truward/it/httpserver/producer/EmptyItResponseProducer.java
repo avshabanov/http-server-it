@@ -1,4 +1,4 @@
-package com.alexshabanov.it.httpserver.producer;
+package com.truward.it.httpserver.producer;
 
 import org.apache.http.HttpRequest;
 import org.apache.http.HttpResponse;

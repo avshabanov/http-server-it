@@ -1,12 +1,11 @@
-package com.alexshabanov.it.httpserver;
+package com.truward.it.httpserver;
 
-import com.alexshabanov.it.httpserver.producer.EmptyItResponseProducer;
-import com.alexshabanov.it.httpserver.producer.StaticJsonResponseProducer;
-import com.alexshabanov.it.httpserver.support.DefaultItHttpServer;
+import com.truward.it.httpserver.producer.EmptyItResponseProducer;
+import com.truward.it.httpserver.producer.StaticJsonResponseProducer;
+import com.truward.it.httpserver.support.DefaultItHttpServer;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.http.Consts;
-import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpEntityEnclosingRequest;
 import org.apache.http.HttpRequest;
