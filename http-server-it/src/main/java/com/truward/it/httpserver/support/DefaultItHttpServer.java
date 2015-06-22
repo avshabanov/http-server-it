@@ -39,22 +39,22 @@ public final class DefaultItHttpServer implements ItHttpServer {
   private static final int DEFAULT_PORT_RANGE_SIZE = 20000;
 
   /**
-   * Timeout to get the socket interaction result
+   * Timeout to get the socket interaction result.
    */
   private static final long DEFAULT_GET_RESULT_TIMEOUT_MILLIS = 200L;
 
   /**
-   * Timeout to accept socket connection
+   * Timeout to accept socket connection.
    */
   private static final long SERVER_ACCEPT_TIMEOUT_MILLIS = 100L;
 
   /**
-   * Timeout to stop server loop, should be considerably greater than #SERVER_ACCEPT_TIMEOUT_MILLIS
+   * Timeout to stop server loop, should be considerably greater than {@link #SERVER_ACCEPT_TIMEOUT_MILLIS}.
    */
   private static final long SERVER_STOP_TIMEOUT_MILLIS = 1000L;
 
   /**
-   * Single iteration timeout to wait till server loop responds with the stop confirmation
+   * Single iteration timeout to wait till server loop responds with the stop confirmation.
    */
   private static final long SERVER_STOP_ITER_TIMEOUT_MILLIS = SERVER_ACCEPT_TIMEOUT_MILLIS;
 
@@ -66,7 +66,7 @@ public final class DefaultItHttpServer implements ItHttpServer {
   private ExecutorService executorService;
 
   /**
-   * Flag, that indicates this server has been started and some properties can no longer be changed
+   * Flag, that indicates this server has been started and some properties can no longer be changed.
    */
   private boolean started = false;
 
@@ -87,18 +87,19 @@ public final class DefaultItHttpServer implements ItHttpServer {
   private volatile ItResponseProducer responseProducer;
 
   /**
-   * Public constructor
+   * Public constructor.
+   *
+   * @param executorService Service to be used for spawning new listener threads
    */
   public DefaultItHttpServer(ExecutorService executorService) {
     this(executorService, DEFAULT_SO_TIMEOUT, -1);
   }
 
   /**
-   * Public constructor
+   * Public constructor.
    *
-   * @param soTimeout Socket connection timeout in milliseconds
+   * @param soTimeout Socket connection timeout in milliseconds. See also {@link #setSoTimeout(int)}
    * @param port Server socket listening port, will be picked automatically if negative
-   * @see {@link #setSoTimeout(int)}
    */
   public DefaultItHttpServer(ExecutorService executorService, int soTimeout, int port) {
     setExecutorService(executorService);
