@@ -34,6 +34,6 @@ You should note, that:
     <dependency>
         <groupId>com.truward.it.httpserver</groupId>
         <artifactId>http-server-it</artifactId>
-        <version>1.0.1</version>
+        <version>1.0.2</version>
     </dependency>
 ```
